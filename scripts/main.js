@@ -1,9 +1,13 @@
 function app() {
+    ///Configuring Html
     const doc = document;
-    const h1 = doc.createElement("h1");
-    h1.textContent = "Welcome to my clock app!";
-    doc.body.appendChild(h1);
+    const container = doc.createElement("div");
+    container.id = "container";
+    doc.body.appendChild(container);
 
+    const welcome_prompt = doc.createElement("h1");
+    welcome_prompt.textContent = "Welcome to my clock app!";
+    container.appendChild(welcome_prompt);
     const h2 = doc.createElement("h2");
     updateTime(doc, h2)
 }
