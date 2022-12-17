@@ -1,19 +1,31 @@
 function app() {
     ///Configuring Html
     const doc = document;
+
+    ///Defining container for the app
     const container = doc.createElement("div");
-    container.id = "container";
+    container.setAttribute("style",
+        "position: relative; left:400px; top: 200px; border-style:double; border-width:10px; text-align:center;"+
+        "width:500px"
+    )
     doc.body.appendChild(container);
 
-    const welcome_prompt = doc.createElement("h1");
-    welcome_prompt.textContent = "Welcome to my clock app!";
-    container.appendChild(welcome_prompt);
-    const h2 = doc.createElement("h2");
-    updateTime(doc, h2)
+    ///Adding Welcome Prompt
+    const welcomePrompt = doc.createElement("h1");
+    welcomePrompt.textContent = "Welcome to my clock app!";
+    container.appendChild(welcomePrompt);
+
+    ///creates clock element
+    const clock = doc.createElement("h2");
+    updateTime(container, clock);
 }
 
-function updateTime(doc, element){
-    doc.body.appendChild(element)
+function updateTime(container, element){
+    ///Updates time 
+    const date = new Date();
+    element.innerHTML = date.toTimeString().split(" ")[0];
+    container.appendChild(element);
+
     const interval = setInterval(() => {
         const date = new Date();
         let time = date.toTimeString().split(" ")[0];
